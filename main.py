@@ -1,5 +1,3 @@
-# this is the main program file for the tv remote w/ gui
-
 from controller import *
 
 def main():
