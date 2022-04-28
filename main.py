@@ -3,8 +3,10 @@
 from controller import *
 
 def main():
+    my_TV = Television()
+    
     app = QApplication([])
-    window = Controller()
+    window = Controller(my_TV)
     window.show()
     app.exec_()
 
