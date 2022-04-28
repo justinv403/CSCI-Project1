@@ -1,3 +1,7 @@
+from PyQt5.QtWidgets import *
+from view import Ui_Window
+import csv
+
 class Television:
     MIN_CHANNEL = 0     # Minimum TV channel
     MAX_CHANNEL = 3     # Maximum TV channel
