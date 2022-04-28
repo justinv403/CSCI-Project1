@@ -42,7 +42,7 @@
      <string>°</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="volumeUp">
+   <widget class="QPushButton" name="volumeUpButton">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -60,7 +60,7 @@
      <string>+</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="volumeDown">
+   <widget class="QPushButton" name="volumeDownButton">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -84,7 +84,7 @@
      <string>-</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="channelUp">
+   <widget class="QPushButton" name="channelUpButton">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -102,7 +102,7 @@
      <string>CH+</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="channelDown">
+   <widget class="QPushButton" name="channelDownButton">
     <property name="geometry">
      <rect>
       <x>10</x>
