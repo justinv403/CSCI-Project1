@@ -78,3 +78,6 @@ class Television:
         - This method should be used to return the TV status using the format shown in the comments of main.py
         """
         return "TV status: Is on = " + str(self.__status) +", Channel = " + str(self.__channel) + ", Volume = " + str(self.__volume)
+    
+    def get_status(self):
+        return self.__status,self.__channel,self.__volume
