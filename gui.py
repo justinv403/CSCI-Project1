@@ -3,6 +3,12 @@ from classes import *
 
 class GUI:
     def __init__(self, window):
+        """
+        Initializes the GUI for display to the user
+
+        :param window: This is the window for the GUI passed from main.py (or any program of your choosing)
+        """
+        
         self.my_tv = Television()
         self.window = window
 
@@ -36,28 +42,50 @@ class GUI:
         self.frame_status.pack(anchor="n", pady="50")
 
     def powerClicked(self):
+        """
+        This method toggles the power state using the method in the Television object,
+        then calls the updateLabel() method to change the status displayed in the GUI
+        """
         self.my_tv.power()
         self.updateLabel()
     
     def volumeUpClicked(self):
+        """
+        This method increases the volume using the method in the Television object,
+        then calls the updateLabel() method to change the status displayed in the GUI
+        """
         self.my_tv.volume_up()
         self.updateLabel()
 
     def volumeDownClicked(self):
+        """
+        This method decreases the volume using the method in the Television object,
+        then calls the updateLabel() method to change the status displayed in the GUI
+        """
         self.my_tv.volume_down()
         self.updateLabel()
 
     def channelUpClicked(self):
+        """
+        This method increases the channel using the method in the Television object,
+        then calls the updateLabel() method to change the status displayed in the GUI
+        """
         self.my_tv.channel_up()
         self.updateLabel()
 
     def channelDownClicked(self):
+        """
+        This method decreases the channel using the method in the Television object,
+        then calls the updateLabel() method to change the status displayed in the GUI
+        """
         self.my_tv.channel_down()
         self.updateLabel()
 
-    # this updates the labels to display to the user
-    # reduces the amount of times this code has to be written   
     def updateLabel(self):
+        """
+        This method updates the labels for the power status, channel, and volume
+        It will "hide" the volume and channel text boxes when the TV is off
+        """
         if self.my_tv.get_status()[0] == 1:
             self.powerButton.configure(bg="green")
             self.label_status.configure(text="On")
