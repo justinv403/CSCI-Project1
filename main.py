@@ -3,13 +3,13 @@ from gui import *
 def main():
     """
     - Change the window title to 'TV Remote'.
-    - Set its length to 300 and height to 600.
+    - Set its length to 300 and height to 700.
     - Make the window non-resizable.
     """
     window = Tk()
     widgets = GUI(window)
     window.title("TV Remote")
-    window.geometry("300x600")
+    window.geometry("300x700")
     window.resizable(False,False)
     window.mainloop()
 
