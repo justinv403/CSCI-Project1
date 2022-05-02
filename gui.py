@@ -1,5 +1,6 @@
 from tkinter import *
 from classes import *
+from PIL import ImageTk, Image
 
 class GUI:
     def __init__(self, window):
@@ -18,18 +19,29 @@ class GUI:
         self.frame_power.pack(anchor="n", pady=15)
         
         self.frame_volume = Frame(self.window)
-        self.volumeUpButton = Button(self.frame_volume, text="+",font=("Segoe UI", 20), height=1,width=4, command=self.volumeUpClicked)
-        self.volumeDownButton = Button(self.frame_volume, text="-",font=("Segoe UI", 20), height=1,width=4, command=self.volumeDownClicked)
-        self.volumeUpButton.pack(side="top")
-        self.volumeDownButton.pack(side="bottom")
+        self.volumeStatus = Label(self.frame_volume, text = "[---------]", font=("Segoe UI", 20))
+        self.volumeStatus.pack(side="top")
         self.frame_volume.pack(anchor="n", pady=15)
+        
+        self.frame_image = Frame(self.window)
+        self.img = ImageTk.PhotoImage(Image.open("./channelImages/tile000.png"))
+        self.imageLabel = Label(self.frame_image, image=self.img)
+        self.imageLabel.pack(side="top")
+        self.frame_image.pack(anchor="n", pady=15)
+        
+        self.frame_up = Frame(self.window)
+        self.channelUpButton = Button(self.frame_up, text="CH+",font=("Segoe UI", 20), height=1,width=4, command=self.channelUpClicked)
+        self.volumeUpButton = Button(self.frame_up, text="+",font=("Segoe UI", 20), height=1,width=4, command=self.volumeUpClicked)
+        self.volumeUpButton.pack(side="left")
+        self.channelUpButton.pack(side="right")
+        self.frame_up.pack(anchor="n", pady=15, padx=15)
 
-        self.frame_channel = Frame(self.window)
-        self.channelUpButton = Button(self.frame_channel, text="CH+",font=("Segoe UI", 20), height=1,width=4, command=self.channelUpClicked)
-        self.channelDownButton = Button(self.frame_channel, text="CH-",font=("Segoe UI", 20), height=1,width=4, command=self.channelDownClicked)
-        self.channelUpButton.pack(side="top")
-        self.channelDownButton.pack(side="bottom")
-        self.frame_channel.pack(anchor="n", pady=15)        
+        self.frame_down = Frame(self.window)
+        self.channelDownButton = Button(self.frame_down, text="CH-",font=("Segoe UI", 20), height=1,width=4, command=self.channelDownClicked)
+        self.volumeDownButton = Button(self.frame_down, text="-",font=("Segoe UI", 20), height=1,width=4, command=self.volumeDownClicked)
+        self.volumeDownButton.pack(side="left")
+        self.channelDownButton.pack(side="right")
+        self.frame_down.pack(anchor="n", padx=15)        
         
         self.frame_status = Frame(self.window)
         self.status_var = StringVar()

@@ -14,3 +14,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# NOTE:
+# image for channel?
+# volume bar?
