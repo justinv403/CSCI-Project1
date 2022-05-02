@@ -15,7 +15,7 @@ class TestClasses(unittest.TestCase):
         """
         del self.tv
 
-    
+     
     def test_power(self):
         """
         Tests the power method of the TV
@@ -25,24 +25,33 @@ class TestClasses(unittest.TestCase):
         assert(self.tv.__str__() == "TV status: Is on = True, Channel = 0, Volume = 0")
         self.tv.power()
         assert(self.tv.__str__() == "TV status: Is on = False, Channel = 0, Volume = 0")
-
+    
 
     def test_channel_up(self):
         """
         Tests the channel_up method of the TV
         """
-        assert(self.tv.__str__() == "TV status: Is on = False, Channel = 0, Volume = 0")
         self.tv.channel_up()
         assert(self.tv.__str__() == "TV status: Is on = False, Channel = 0, Volume = 0")
         self.tv.power()
+
         self.tv.channel_up()
         assert(self.tv.__str__() == "TV status: Is on = True, Channel = 1, Volume = 0")
-        self.tv.channel_up()
-        self.tv.channel_up()
-        assert(self.tv.__str__() == "TV status: Is on = True, Channel = 3, Volume = 0")
+        
+        new_channel = 2
+        count = 0
+        for index in range(62):
+            self.tv.channel_up()
+            assert(self.tv.__str__() == "TV status: Is on = True, Channel = " + str(new_channel + count) + ", Volume = 0")
+            count += 1
+
         self.tv.channel_up()
         assert(self.tv.__str__() == "TV status: Is on = True, Channel = 0, Volume = 0")
-    
+        self.tv.channel_up()
+        assert(self.tv.__str__() == "TV status: Is on = True, Channel = 1, Volume = 0")
+        
+        
+   
 
     def test_channel_down(self):
         """
@@ -52,13 +61,13 @@ class TestClasses(unittest.TestCase):
         assert(self.tv.__str__() == "TV status: Is on = False, Channel = 0, Volume = 0")
         self.tv.power()
         self.tv.channel_down()
-        assert(self.tv.__str__() == "TV status: Is on = True, Channel = 3, Volume = 0")
+        assert(self.tv.__str__() == "TV status: Is on = True, Channel = 63, Volume = 0")
         self.tv.channel_down()
-        assert(self.tv.__str__() == "TV status: Is on = True, Channel = 2, Volume = 0")
+        assert(self.tv.__str__() == "TV status: Is on = True, Channel = 62, Volume = 0")
         self.tv.channel_down()
-        assert(self.tv.__str__() == "TV status: Is on = True, Channel = 1, Volume = 0")
+        assert(self.tv.__str__() == "TV status: Is on = True, Channel = 61, Volume = 0")
         self.tv.channel_down()
-        assert(self.tv.__str__() == "TV status: Is on = True, Channel = 0, Volume = 0")
+        assert(self.tv.__str__() == "TV status: Is on = True, Channel = 60, Volume = 0")
     
 
     def test_volume_up(self):
@@ -68,12 +77,21 @@ class TestClasses(unittest.TestCase):
         self.tv.volume_up()
         assert(self.tv.__str__() == "TV status: Is on = False, Channel = 0, Volume = 0")
         self.tv.power()
+
         self.tv.volume_up()
         assert(self.tv.__str__() == "TV status: Is on = True, Channel = 0, Volume = 1")
+        
+        new_vol = 2
+        count = 0
+        for index in range(8):
+            self.tv.volume_up()
+            assert(self.tv.__str__() == "TV status: Is on = True, Channel = 0, Volume = " + str(new_vol + count))
+            count += 1
+        
         self.tv.volume_up()
-        assert(self.tv.__str__() == "TV status: Is on = True, Channel = 0, Volume = 2")
+        assert(self.tv.__str__() == "TV status: Is on = True, Channel = 0, Volume = 10")
         self.tv.volume_up()
-        assert(self.tv.__str__() == "TV status: Is on = True, Channel = 0, Volume = 2")
+        assert(self.tv.__str__() == "TV status: Is on = True, Channel = 0, Volume = 10")
 
     
     def test_volume_down(self):
@@ -95,6 +113,7 @@ class TestClasses(unittest.TestCase):
         assert(self.tv.__str__() == "TV status: Is on = True, Channel = 0, Volume = 0")
         self.tv.volume_down()
         assert(self.tv.__str__() == "TV status: Is on = True, Channel = 0, Volume = 0")
+    
 
 if __name__ == "__main__":
     unittest.main()

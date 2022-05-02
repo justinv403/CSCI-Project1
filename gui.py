@@ -19,7 +19,9 @@ class GUI:
         self.frame_power.pack(anchor="n", pady=15)
         
         self.frame_volume = Frame(self.window)
-        self.volumeStatus = Label(self.frame_volume, text = "[---------]", font=("Segoe UI", 20))
+        self.volumeLabel = Label(self.frame_volume, text="Vol:", font=("Segoe UI", 20))
+        self.volumeStatus = Label(self.frame_volume, text = "[----------]", font=("Segoe UI", 20))
+        self.volumeLabel.pack(side="left")
         self.volumeStatus.pack(side="top")
         self.frame_volume.pack(anchor="n", pady=15)
         
@@ -103,12 +105,47 @@ class GUI:
             self.label_status.configure(text="On")
             self.label_status2.configure(text="Channel = " + str(self.my_tv.get_status()[1]))
             self.label_status3.configure(text="Volume = " + str(self.my_tv.get_status()[2]))
-            self.img = ImageTk.PhotoImage(Image.open("./channelImages/tile0"+str(self.my_tv.get_status()[1])+".png"))
+            channel = self.my_tv.get_status()[1]
+            
+            # volume graphic
+            volume = self.my_tv.get_status()[2]
+            if volume == 0:
+                self.volumeStatus.configure(text="[----------]")
+            elif volume == 1:
+                self.volumeStatus.configure(text="[x---------]")
+            elif volume == 2:
+                self.volumeStatus.configure(text="[xx--------]")
+            elif volume == 3:
+                self.volumeStatus.configure(text="[xxx-------]")
+            elif volume == 4:
+                self.volumeStatus.configure(text="[xxxx------]")
+            elif volume == 5:
+                self.volumeStatus.configure(text="[xxxxx-----]")
+            elif volume == 6:
+                self.volumeStatus.configure(text="[xxxxxx----]")
+            elif volume == 7:
+                self.volumeStatus.configure(text="[xxxxxxx---]")
+            elif volume == 8:
+                self.volumeStatus.configure(text="[xxxxxxxx--]")
+            elif volume == 9:
+                self.volumeStatus.configure(text="[xxxxxxxxx-]")
+            elif volume == 10:
+                self.volumeStatus.configure(text="[xxxxxxxxxx]")
+
+            # image changer
+            if channel < 10 and channel >= 0:
+                self.img = ImageTk.PhotoImage(Image.open("./channelImages/tile00"+str(self.my_tv.get_status()[1])+".png"))
+            elif channel < 100 and channel >= 10:
+                self.img = ImageTk.PhotoImage(Image.open("./channelImages/tile0"+str(self.my_tv.get_status()[1])+".png"))
+            else:
+                self.img = ImageTk.PhotoImage(Image.open("./channelImages/blank.png"))
             self.imageLabel.configure(image=self.img)
+        
         else:
             self.powerButton.configure(bg="red")
             self.label_status.configure(text="Off")
             self.label_status2.configure(text="")
             self.label_status3.configure(text="")
-            self.img = ImageTk.PhotoImage(Image.open("./channelImages/tile0"+str(self.my_tv.get_status()[1])+".png"))
+            self.img = ImageTk.PhotoImage(Image.open("./channelImages/blank.png"))
             self.imageLabel.configure(image=self.img)
+            self.volumeStatus.configure(text="[----------]")

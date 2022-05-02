@@ -7,7 +7,7 @@ def main():
     window = Tk()
     widgets = GUI(window)
     window.title("TV Remote")
-    window.geometry("300x700")
+    window.geometry("300x850")
     window.resizable(False,False)
     window.mainloop()
 
