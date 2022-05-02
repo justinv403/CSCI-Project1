@@ -103,8 +103,12 @@ class GUI:
             self.label_status.configure(text="On")
             self.label_status2.configure(text="Channel = " + str(self.my_tv.get_status()[1]))
             self.label_status3.configure(text="Volume = " + str(self.my_tv.get_status()[2]))
+            self.img = ImageTk.PhotoImage(Image.open("./channelImages/tile0"+str(self.my_tv.get_status()[1])+".png"))
+            self.imageLabel.configure(image=self.img)
         else:
             self.powerButton.configure(bg="red")
             self.label_status.configure(text="Off")
             self.label_status2.configure(text="")
             self.label_status3.configure(text="")
+            self.img = ImageTk.PhotoImage(Image.open("./channelImages/tile0"+str(self.my_tv.get_status()[1])+".png"))
+            self.imageLabel.configure(image=self.img)
